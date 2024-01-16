@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 export default function Navbar(props) {
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
                 <a className="navbar-brand mx-2" href="/">
                     {props.title}
                 </a>
@@ -34,25 +34,31 @@ export default function Navbar(props) {
                             </a>
                         </li>
                     </ul>
-                    <form className="d-flex ms-auto px-2" role="search">
+                    <div className={`form-check form-switch text-${props.mode==='light'?'dark':'light'} ms-auto mx-2`}>
+                        <input className="form-check-input " onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+                        <label className="form-check-label" htmlFor="flexSwitchCheckDefault">{props.switchMode}</label>
+                    </div>
+                    {/* <form className="d-flex ms-auto px-2" role="search">
                         <input
                             className="form-control me-2"
                             type="search"
                             placeholder="Search"
                             aria-label="Search"
                         />
-                        <button className="btn btn-outline-primary" type="submit">
+                        <button className="btn btn-outline-info" type="submit">
                             Search
                         </button>
-                    </form>
+                    </form> */}
                 </div>
             </nav>
         </>
     );
 }
 
-Navbar.propTypes = {title: PropTypes.string.isRequired,
-                    aboutText: PropTypes.string.isRequired}
+Navbar.propTypes = {
+    title: PropTypes.string.isRequired,
+    aboutText: PropTypes.string.isRequired
+}
 
 // Navbar.defaultProps = {
 //     title : "Set title here",

@@ -11,6 +11,19 @@ function App() {
   const [alert, setAlert] = useState(null);
 
 
+  const handleThemeYellow =()=>{
+    setMode("warning")
+    document.body.style.backgroundColor = '#fdfdc2';
+  }
+  const handleThemeGreen =()=>{
+    setMode("success")
+    document.body.style.backgroundColor = '#d6efd6';
+  }
+  const handleThemeRed =()=>{
+    setMode("danger")
+    document.body.style.backgroundColor = '#ffdbdb';
+  }
+
   const showAlert = (message, type) => {
     setAlert({
       msg: message,
@@ -22,7 +35,7 @@ function App() {
   }
 
   const toggleMode = () => {
-    if (mode === 'light') {
+    if (mode !== 'dark') {
       setMode("dark")
       document.body.style.backgroundColor = 'black';
       showAlert("Dark mode enabled", "success");
@@ -35,7 +48,7 @@ function App() {
   }
   return (
     <>
-      <Navbar title="TextUtils" aboutText="About Us" mode={mode} toggleMode={toggleMode} />
+      <Navbar title="TextUtils" aboutText="About Us" mode={mode} toggleMode={toggleMode} handleThemeGreen={handleThemeGreen} handleThemeRed={handleThemeRed} handleThemeYellow={handleThemeYellow}  />
 
       <Alert alert={alert} />
       <div className="container my-3">

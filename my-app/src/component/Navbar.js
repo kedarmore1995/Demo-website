@@ -5,6 +5,7 @@ import React from 'react';
 
 export default function Navbar(props) {
 
+
     return (
         <>
             <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
@@ -36,9 +37,17 @@ export default function Navbar(props) {
                             </a>
                         </li>
                     </ul>
-                    <div className={`form-check form-switch text-${props.mode === 'light' ? 'dark' : 'light'} ms-auto mx-2`}>
-                        <input className="form-check-input " onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckDefault" />
-                        <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Enable {props.mode==='dark'?" light":"dark"} mode</label>
+                    <div className={` ms-auto mx-3 text-${props.mode === 'light' ? 'dark' : 'light'}`}>Change theme
+
+                        <input className="form-check-input mx-2" onClick={props.handleThemeGreen} type="radio" value="option1" style={{ backgroundColor: "green" }} />
+                        <input className="form-check-input mx-2" onClick={props.handleThemeYellow} type="radio" value="option2" style={{ backgroundColor: "yellow" }} />
+                        <input className="form-check-input mx-2" onClick={props.handleThemeRed} type="radio" value="option3" style={{ backgroundColor: "red" }} />
+
+
+                    </div>
+                    <div className={`form-check form-switch text-${props.mode === 'light' ? 'dark' : 'light'}`}>
+                        <input className="form-check-input" onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+                        <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Enable {props.mode === 'dark' ? " light" : "dark"} mode</label>
                     </div>
                     {/* <form className="d-flex ms-auto px-2" role="search">
                         <input

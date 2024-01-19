@@ -1,17 +1,17 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { Link } from "react-router-dom"
+
 
 
 
 export default function Navbar(props) {
-
-
     return (
         <>
             <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
-                <a className="navbar-brand mx-2" href="/">
+                <Link className="navbar-brand mx-2" to="/">
                     {props.title}
-                </a>
+                </Link>
                 <button
                     className="navbar-toggler"
                     type="button"
@@ -27,14 +27,14 @@ export default function Navbar(props) {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item active">
-                            <a className="nav-link" href="/">
+                            <Link className="nav-link" to="/">
                                 Home <span className="sr-only"></span>
-                            </a>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/">
+                            <Link className="nav-link" to="/about">
                                 {props.aboutText}
-                            </a>
+                            </Link>
                         </li>
                     </ul>
                     <div className={` ms-auto mx-3 text-${props.mode === 'light' ? 'dark' : 'light'}`}>Change theme
@@ -47,7 +47,7 @@ export default function Navbar(props) {
                     </div>
                     <div className={`form-check form-switch text-${props.mode === 'light' ? 'dark' : 'light'}`}>
                         <input className="form-check-input" onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckDefault" />
-                        <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Enable {props.mode === 'dark' ? " light" : "dark"} mode</label>
+                        <label className="form-check-label" htmlFor="flexSwitchCheckDefault">{props.btnTxt}</label>
                     </div>
                     {/* <form className="d-flex ms-auto px-2" role="search">
                         <input
